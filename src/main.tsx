@@ -17,6 +17,10 @@ const Global = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
 }
 
+#root {
+    height: 100%;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -28,7 +32,7 @@ html {
 }
 
 body{
-    min-height: 100%;
+    height: 100%;
 }
 
 ul {

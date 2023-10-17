@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../Layout/Layout';
+import { HomePage } from '../pages/home.page';
 
 function App(): ReactNode {
     return (
@@ -9,7 +10,7 @@ function App(): ReactNode {
                 <Route path="/" element={<Layout />}>
                     <Route
                         index
-                        element={<h1>Home</h1>}
+                        element={<HomePage />}
                     />
                     <Route
                         path="sign-up"
