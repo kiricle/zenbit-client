@@ -16,6 +16,7 @@ const MyInput = styled.input`
     line-height: 22px;
     font-family: Lato, sans-serif;
     color: #172234;
+    width: 100%;
 
     &::placeholder {
         color: #172234;

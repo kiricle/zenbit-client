@@ -1,15 +1,22 @@
 import { ReactNode } from 'react';
-import { Outlet } from 'react-router-dom';
+import styled from 'styled-components';
 import { Link } from '../ui/Link/Link';
 import { Header } from './Header/Header';
-import styled from 'styled-components';
 
 const Main = styled.main`
     height: calc(100% - 80px);
 `;
 
-export const Layout = (): ReactNode => {
-    const actions = [
+export const Layout = ({
+    withActions = false,
+    withHeader = false,
+    page
+}: {
+    withActions?: boolean;
+    withHeader?: boolean;
+    page: ReactNode
+}): ReactNode => {
+    const actions = withActions ? [
         <Link
             key={1}
             appearance="outlined-white"
@@ -31,13 +38,13 @@ export const Layout = (): ReactNode => {
         >
             Sign in
         </Link>,
-    ];
+    ] : undefined;
 
     return (
         <>
-            <Header actions={actions} />
+            {withHeader && <Header actions={actions} />}
 
-            <Main>{<Outlet />}</Main>
+            <Main>{page}</Main>
         </>
     );
 };

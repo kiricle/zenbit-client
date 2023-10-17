@@ -2,24 +2,37 @@ import { ReactNode } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../Layout/Layout';
 import { HomePage } from '../pages/home.page';
-import { Input } from '../ui/Input/Input';
+import { SignUpPage } from '../pages/sign-up/sign-up.page';
+import { SignInPage } from '../pages/sign-in/sign-in.page';
 
 function App(): ReactNode {
     return (
         <>
             <Routes>
-                <Route path="/" element={<Layout />}>
+                <Route path="/">
                     <Route
                         index
-                        element={<HomePage />}
+                        element={
+                            <Layout
+                                page={<HomePage />}
+                                withActions
+                                withHeader
+                            />
+                        }
                     />
                     <Route
                         path="sign-up"
-                        element={<Input label='Email' placeholder='Email' type="text" />}
+                        element={
+                            <Layout
+                                withHeader
+                                withActions={false}
+                                page={<SignUpPage />}
+                            />
+                        }
                     />
                     <Route
                         path="sign-in"
-                        element={<h1>Sign-in</h1>}
+                        element={<Layout withHeader page={<SignInPage />} />}
                     />
                     <Route
                         path="*"
