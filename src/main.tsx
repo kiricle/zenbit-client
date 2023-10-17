@@ -33,6 +33,7 @@ html {
 
 body{
     height: 100%;
+    background-color: #F2F2F2;
 }
 
 ul {

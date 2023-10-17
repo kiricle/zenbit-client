@@ -65,7 +65,7 @@ export const HomePage = (): ReactNode => {
                 </SubHeading>
                 <Link
                     appearance="outlined-white"
-                    to="/sign-up"
+                    to="/deals"
                 >
                     Get Started
                 </Link>

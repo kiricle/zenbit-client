@@ -4,6 +4,7 @@ import { Layout } from '../Layout/Layout';
 import { HomePage } from '../pages/home.page';
 import { SignUpPage } from '../pages/sign-up/sign-up.page';
 import { SignInPage } from '../pages/sign-in/sign-in.page';
+import { DealsPage } from '../pages/deals/deals.page';
 
 function App(): ReactNode {
     return (
@@ -32,7 +33,16 @@ function App(): ReactNode {
                     />
                     <Route
                         path="sign-in"
-                        element={<Layout withHeader page={<SignInPage />} />}
+                        element={
+                            <Layout
+                                withHeader
+                                page={<SignInPage />}
+                            />
+                        }
+                    />
+                    <Route
+                        path="deals"
+                        element={<DealsPage />}
                     />
                     <Route
                         path="*"
