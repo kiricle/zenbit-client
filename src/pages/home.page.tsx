@@ -38,6 +38,8 @@ const SubHeading = styled.p`
     color: white;
     font-size: 24px;
     line-height: 32px;
+    width: 75%;
+    font-family: Lato,sans-serif;
 `;
 
 const HeadingContainer = styled.section`

@@ -7,7 +7,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const Global = createGlobalStyle`
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Merriweather', serif;
     line-height: 1.5;
     font-weight: 400;
     font-synthesis: none;
