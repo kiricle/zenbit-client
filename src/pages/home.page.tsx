@@ -10,7 +10,7 @@ const Box = styled.div`
     background-size: cover;
     height: 100%;
     position: relative;
-    
+
     display: grid;
     place-content: center;
 
@@ -39,7 +39,7 @@ const SubHeading = styled.p`
     font-size: 24px;
     line-height: 32px;
     width: 75%;
-    font-family: Lato,sans-serif;
+    font-family: Lato, sans-serif;
 `;
 
 const HeadingContainer = styled.section`

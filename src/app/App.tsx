@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../Layout/Layout';
 import { HomePage } from '../pages/home.page';
+import { Input } from '../ui/Input/Input';
 
 function App(): ReactNode {
     return (
@@ -14,7 +15,7 @@ function App(): ReactNode {
                     />
                     <Route
                         path="sign-up"
-                        element={<h1>Sign-up</h1>}
+                        element={<Input label='Email' placeholder='Email' type="text" />}
                     />
                     <Route
                         path="sign-in"
