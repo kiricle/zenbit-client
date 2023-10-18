@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const Article = styled.article<{ img: string }>`
     background-image: url(${(props) => props.img});
     max-width: 630px;
-    // width: 100%;
     height: 400px;
 `;
 
@@ -54,6 +53,7 @@ export const DealCard = ({
     yieldPercentage: number;
     sold: number;
 }): ReactNode => {
+    console.log(img);
     return (
         <Article img={img}>
             <Content>

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './app/App.tsx';
 import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
+import Store from './store/store.ts';
 
 const Global = createGlobalStyle`
 :root {
@@ -45,11 +46,22 @@ a {
 }
 `;
 
+interface State {
+    store: Store;
+}
+const store = new Store();
+
+export const Context = React.createContext<State>({
+    store,
+});
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <BrowserRouter>
-            <Global />
-            <App />
+            <Context.Provider value={{ store }}>
+                <Global />
+                <App />
+            </Context.Provider>
         </BrowserRouter>
     </React.StrictMode>
 );

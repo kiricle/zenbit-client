@@ -1,7 +1,11 @@
 import type { ReactNode } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { Context } from '../../main';
+import { Deal } from '../../models/deal';
+import { DealsService } from '../../services/deals-service';
 import { DealCard } from './ui/DealCard';
-import CardImg from '../../assets/card1.jpg';
 
 const Container = styled.div`
     padding-top: 50px;
@@ -26,7 +30,7 @@ const DealsFlex = styled.section`
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    width:100%;
+    width: 100%;
     padding: 0 5px;
 
     @media (max-width: 1315px) {
@@ -35,46 +39,55 @@ const DealsFlex = styled.section`
 `;
 
 export const DealsPage = (): ReactNode => {
+    const { store } = useContext(Context);
+    const navigate = useNavigate();
+    const [deals, setDeals] = useState<Deal[]>([]);
+
+    if (store.isAuth === false) {
+        navigate('/sign-in');
+    }
+
+    useEffect(() => {
+        getDeals();
+    }, []);
+
+    async function getDeals() {
+        try {
+            const response = await DealsService.getDeals();
+            setDeals(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <Container>
             <Title>Open Deals</Title>
             <DealsFlex>
-                <DealCard
-                    img={CardImg}
-                    name="The Marina Torch"
-                    price={6_500_000}
-                    daysLeft={150}
-                    ticketPrice={60_000}
-                    sold={75}
-                    yieldPercentage={9.25}
-                />
-                <DealCard
-                    img={CardImg}
-                    name="The Marina Torch"
-                    price={6_500_000}
-                    daysLeft={150}
-                    ticketPrice={60_000}
-                    sold={75}
-                    yieldPercentage={9.25}
-                />
-                <DealCard
-                    img={CardImg}
-                    name="The Marina Torch"
-                    price={6_500_000}
-                    daysLeft={150}
-                    ticketPrice={60_000}
-                    sold={75}
-                    yieldPercentage={9.25}
-                />
-                <DealCard
-                    img={CardImg}
-                    name="The Marina Torch"
-                    price={6_500_000}
-                    daysLeft={150}
-                    ticketPrice={60_000}
-                    sold={75}
-                    yieldPercentage={9.25}
-                />
+                {deals.length &&
+                    deals.map(
+                        ({
+                            id,
+                            img,
+                            name,
+                            daysLeft,
+                            price,
+                            sold,
+                            ticketPrice,
+                            yield: yieldPercentage,
+                        }) => (
+                            <DealCard
+                                key={id}
+                                img={img}
+                                name={name}
+                                price={price}
+                                daysLeft={daysLeft}
+                                ticketPrice={ticketPrice}
+                                sold={sold}
+                                yieldPercentage={yieldPercentage}
+                            />
+                        )
+                    )}
             </DealsFlex>
         </Container>
     );

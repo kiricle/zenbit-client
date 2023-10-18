@@ -6,6 +6,10 @@ const Wrapper = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
+
+    @media(max-width: 985px) {
+        justify-content: center
+    }
 `;
 
 const Image = styled.img`
@@ -14,6 +18,10 @@ const Image = styled.img`
     object-fit: cover;
     height: 100%;
     max-width: calc(100% - 38%);
+    
+    @media(max-width: 985px) {
+        display: none;
+    }
 `;
 
 const FormContainer = styled.div`

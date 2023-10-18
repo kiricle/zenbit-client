@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { ReactNode } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../Layout/Layout';
@@ -5,6 +6,7 @@ import { HomePage } from '../pages/home.page';
 import { SignUpPage } from '../pages/sign-up/sign-up.page';
 import { SignInPage } from '../pages/sign-in/sign-in.page';
 import { DealsPage } from '../pages/deals/deals.page';
+import { observer } from 'mobx-react-lite';
 
 function App(): ReactNode {
     return (
@@ -26,7 +28,6 @@ function App(): ReactNode {
                         element={
                             <Layout
                                 withHeader
-                                withActions={false}
                                 page={<SignUpPage />}
                             />
                         }
@@ -36,6 +37,7 @@ function App(): ReactNode {
                         element={
                             <Layout
                                 withHeader
+                                withActions
                                 page={<SignInPage />}
                             />
                         }
@@ -54,4 +56,4 @@ function App(): ReactNode {
     );
 }
 
-export default App;
+export default observer(App);
